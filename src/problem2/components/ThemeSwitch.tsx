@@ -4,10 +4,15 @@ import { Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { Switch } from "@/components/ui/switch";
 
 export default function ThemeSwitch() {
     const [mounted, setMounted] = useState(false);
     const { setTheme, resolvedTheme } = useTheme();
+
+    function toggleTheme() {
+        setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
+    }
 
     useEffect(() => setMounted(true), []);
 
@@ -22,12 +27,24 @@ export default function ThemeSwitch() {
             title="Loading Light/Dark Toggle"
         />
     )
-    if (resolvedTheme === 'dark') {
-        return <Moon onClick={() => setTheme('light')} />
-    }
+    return ( 
+        <div className="flex items-center">
+            <Sun className="pr-2 text-yellow-400" size={30} /> {/* Sun icon */}
+            <Switch
+                checked={resolvedTheme === 'dark'} // Set checked state based on current theme
+                onCheckedChange={toggleTheme} // Toggle theme when switch is clicked
+                aria-label="Toggle Light/Dark Theme"
+            />
+            <Moon className="pl-2 text-gray-400" size={30} /> {/* Moon icon */}
+        </div>
+    )
 
-    if (resolvedTheme === 'light') {
-        return <Sun onClick={() => setTheme('dark')} />
-    }
+    // if (resolvedTheme === 'dark') {
+    //     return <Moon onClick={() => setTheme('light')} />
+    // }
+
+    // if (resolvedTheme === 'light') {
+    //     return <Sun onClick={() => setTheme('dark')} />
+    // }
     
 }
