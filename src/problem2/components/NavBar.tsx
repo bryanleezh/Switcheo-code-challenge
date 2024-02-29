@@ -93,9 +93,6 @@ export default function NavBar() {
         </NavigationMenuItem>
       </NavigationMenuList>
 
-      <NavigationMenuList className=''>
-            <ThemeSwitch />
-      </NavigationMenuList>
     </NavigationMenu>
   )
 }
