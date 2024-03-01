@@ -30,7 +30,7 @@ export default function MainForm() {
     useEffect(() => {
         var receive: number = currencySwap(payCurrencyValue, payCurrency, receiveCurrency);
         setReceiveCurrencyValue(receive);
-    }, [payCurrencyValue]);
+    }, [payCurrencyValue, payCurrency, receiveCurrency]);
 
     return  (
         <div className="w-1/2 mx-auto">
