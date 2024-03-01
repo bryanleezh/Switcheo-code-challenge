@@ -23,7 +23,7 @@ export function ExchangeDialog( { onHandleExchange } : ExchangeDialogProps) {
     return (
         <AlertDialog>
         <AlertDialogTrigger asChild>
-            <Button className="bg-border">Exchange</Button>
+            <Button className="bg-border" variant='outline'>Exchange</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
             <AlertDialogHeader>
