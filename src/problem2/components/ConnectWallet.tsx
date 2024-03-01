@@ -31,7 +31,7 @@ export function ConnectWallet() {
         <div className="py-4"></div>
         <SheetFooter>
           <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit" variant="ghost" className="bg-border">Save changes</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>
