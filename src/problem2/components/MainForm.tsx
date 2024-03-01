@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { currencySwap } from "@/lib/currencyswap/currencySwap";
 import { ExchangeDialog } from "./ExchangeDialog";
 import { ConnectWallet } from "./ConnectWallet";
+import { Settings } from "./Settings";
 
 export default function MainForm() {
     // Values
@@ -34,8 +35,9 @@ export default function MainForm() {
     return  (
         <div className="w-1/2 mx-auto">
             <Card>
-                <CardHeader>
+                <CardHeader className="flex flex-row justify-between">
                     <CardTitle>Swap</CardTitle>
+                    <Settings />
                 </CardHeader>
                 <CardContent>
                     <form>
