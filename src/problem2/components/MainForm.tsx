@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -8,11 +7,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import CurrencyPicker from "./CurrencyPicker";
+import CoinInput from "./CoinInput";
+import { useEffect, useState } from "react";
+import { currencySwap } from "@/lib/currencyswap/currencySwap";
+import { ExchangeDialog } from "./ExchangeDialog";
+import { ConnectWallet } from "./ConnectWallet";
 
 export default function MainForm() {
+    // Values
+    const [ payCurrencyValue, setPayCurrencyValue ] = useState<number>(0);
+    const [ receiveCurrencyValue, setReceiveCurrencyValue ] = useState<number>(0);
+    
+    // Currencies
+    const [ payCurrency, setPayCurrency ] = useState<string>("");
+    const [ receiveCurrency, setReceiveCurrency ] = useState<string>("");
+
+    const handleExchange = () => {
+        window.location.reload();
+    }
+
+    useEffect(() => {
+        var receive: number = currencySwap(payCurrencyValue, payCurrency, receiveCurrency);
+        setReceiveCurrencyValue(receive);
+    }, [payCurrencyValue]);
+
     return  (
         <div className="w-1/2 mx-auto">
             <Card>
@@ -22,26 +40,26 @@ export default function MainForm() {
                 <CardContent>
                     <form>
                         <div className="grid w-full items-center gap-4">
-                            <div id="hi" className="flex flex-col space-y-1.5 border rounded-md p-4">
-                                <Label htmlFor="name">You pay</Label>
-                                <div className="flex w-full max-w items-center space-x-2">
-                                    <Input id="paycurrency" type="number" placeholder="0" className="border-none"/>
-                                    <CurrencyPicker />
-                                </div>
-                            </div>
-                            <div className="flex flex-col space-y-1.5 border rounded-md p-4">
-                                <Label htmlFor="name">You receive</Label>
-                                <div className="flex w-full max-w items-center space-x-2">
-                                    <Input id="paycurrency" type="number" placeholder="0" className="border-none"/>
-                                    <CurrencyPicker />
-                                </div>
-                            </div>
+                            <CoinInput 
+                                type={"pay"}
+                                onPayCurrencyValueChange={(value) => setPayCurrencyValue(value)} 
+                                disabledValue={0}
+                                onSelectedCurrencyChange={(value) => setPayCurrency(value)}
+                            />
+                            <CoinInput 
+                                type={"receive"} 
+                                onPayCurrencyValueChange={function (newValue: number): void {
+                                    throw new Error("Function not implemented.");
+                                }}
+                                disabledValue={receiveCurrencyValue}
+                                onSelectedCurrencyChange={(value) => setReceiveCurrency(value)}
+                            />
                         </div>
                     </form>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                    <Button variant="outline">Cancel</Button>
-                    <Button>Swap!</Button>
+                    <ConnectWallet />
+                    <ExchangeDialog onHandleExchange={handleExchange}/>
                 </CardFooter>
             </Card>
         </div>
