@@ -23,7 +23,7 @@ export function Settings() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Oops!</DropdownMenuLabel>
-        <DropdownMenuItem>This feature is currently still pending</DropdownMenuItem>
+        <DropdownMenuItem>This feature is currently pending</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
