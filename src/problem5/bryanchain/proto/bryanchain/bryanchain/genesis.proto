@@ -1,17 +1,20 @@
 syntax = "proto3";
+
 package bryanchain.bryanchain;
 
 import "amino/amino.proto";
 import "gogoproto/gogo.proto";
 import "bryanchain/bryanchain/params.proto";
+import "bryanchain/bryanchain/resource.proto";
 
 option go_package = "bryanchain/x/bryanchain/types";
 
 // GenesisState defines the bryanchain module's genesis state.
 message GenesisState {
+  
   // params defines all the parameters of the module.
-  Params params = 1 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty) = true
-  ];
+           Params   params        = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+  repeated Resource resourceList  = 2 [(gogoproto.nullable) = false] ;
+           uint64   resourceCount = 3;
 }
+
