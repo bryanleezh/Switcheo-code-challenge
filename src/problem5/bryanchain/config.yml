@@ -8,14 +8,22 @@ accounts:
       coins:
           - 10000token
           - 100000000stake
-client:
-    openapi:
-        path: docs/static/openapi.yml
+    - name: chicken
+      coins:
+          - 10000token
+          - 100000000stake
 faucet:
     name: bob
     coins:
         - 5token
         - 100000stake
+client:
+    typescript:
+        path: ts-client
+    hooks:
+        path: react/src/hooks
+    openapi:
+        path: docs/static/openapi.yml
 validators:
     - name: bryan
       bonded: 100000000stake
