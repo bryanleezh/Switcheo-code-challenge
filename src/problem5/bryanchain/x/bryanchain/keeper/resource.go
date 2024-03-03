@@ -11,6 +11,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/runtime"
 )
 
+// Implements functions that keeper methods depend on: add resource, get resource, get resource count etc
 // GetResourceCount get the total number of resource
 func (k Keeper) GetResourceCount(ctx context.Context) uint64 {
 	storeAdapter := runtime.KVStoreAdapter(k.storeService.OpenKVStore(ctx))
