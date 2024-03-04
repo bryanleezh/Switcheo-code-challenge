@@ -298,6 +298,110 @@ func (m *QueryAllResourceResponse) GetPagination() *query.PageResponse {
 	return nil
 }
 
+type QueryCreateResourceRequest struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Title   string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Body    string `protobuf:"bytes,3,opt,name=body,proto3" json:"body,omitempty"`
+}
+
+func (m *QueryCreateResourceRequest) Reset()         { *m = QueryCreateResourceRequest{} }
+func (m *QueryCreateResourceRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryCreateResourceRequest) ProtoMessage()    {}
+func (*QueryCreateResourceRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f03c0d6819abe96b, []int{6}
+}
+func (m *QueryCreateResourceRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryCreateResourceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryCreateResourceRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryCreateResourceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryCreateResourceRequest.Merge(m, src)
+}
+func (m *QueryCreateResourceRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryCreateResourceRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryCreateResourceRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryCreateResourceRequest proto.InternalMessageInfo
+
+func (m *QueryCreateResourceRequest) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *QueryCreateResourceRequest) GetTitle() string {
+	if m != nil {
+		return m.Title
+	}
+	return ""
+}
+
+func (m *QueryCreateResourceRequest) GetBody() string {
+	if m != nil {
+		return m.Body
+	}
+	return ""
+}
+
+type QueryCreateResourceResponse struct {
+	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (m *QueryCreateResourceResponse) Reset()         { *m = QueryCreateResourceResponse{} }
+func (m *QueryCreateResourceResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryCreateResourceResponse) ProtoMessage()    {}
+func (*QueryCreateResourceResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f03c0d6819abe96b, []int{7}
+}
+func (m *QueryCreateResourceResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryCreateResourceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryCreateResourceResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryCreateResourceResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryCreateResourceResponse.Merge(m, src)
+}
+func (m *QueryCreateResourceResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryCreateResourceResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryCreateResourceResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryCreateResourceResponse proto.InternalMessageInfo
+
+func (m *QueryCreateResourceResponse) GetId() uint64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "bryanchain.bryanchain.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "bryanchain.bryanchain.QueryParamsResponse")
@@ -305,44 +409,51 @@ func init() {
 	proto.RegisterType((*QueryGetResourceResponse)(nil), "bryanchain.bryanchain.QueryGetResourceResponse")
 	proto.RegisterType((*QueryAllResourceRequest)(nil), "bryanchain.bryanchain.QueryAllResourceRequest")
 	proto.RegisterType((*QueryAllResourceResponse)(nil), "bryanchain.bryanchain.QueryAllResourceResponse")
+	proto.RegisterType((*QueryCreateResourceRequest)(nil), "bryanchain.bryanchain.QueryCreateResourceRequest")
+	proto.RegisterType((*QueryCreateResourceResponse)(nil), "bryanchain.bryanchain.QueryCreateResourceResponse")
 }
 
 func init() { proto.RegisterFile("bryanchain/bryanchain/query.proto", fileDescriptor_f03c0d6819abe96b) }
 
 var fileDescriptor_f03c0d6819abe96b = []byte{
-	// 499 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x41, 0x6b, 0x13, 0x41,
-	0x14, 0xc7, 0x33, 0x69, 0x0d, 0x3a, 0x05, 0xc1, 0xb1, 0x62, 0x09, 0x66, 0x63, 0x87, 0xda, 0xda,
-	0x20, 0x33, 0xb4, 0x1e, 0xbc, 0x9a, 0x1c, 0xec, 0xb5, 0xee, 0x45, 0x10, 0x3c, 0x4c, 0x92, 0x61,
-	0x1d, 0xd8, 0xcc, 0x6c, 0x77, 0x36, 0x62, 0x10, 0x2f, 0x1e, 0x3c, 0x0b, 0x1e, 0xc4, 0x2f, 0x20,
-	0x1e, 0xfd, 0x14, 0xd2, 0x63, 0xc1, 0x8b, 0x27, 0x91, 0x44, 0xf0, 0x6b, 0xc8, 0xce, 0xcc, 0xba,
-	0x1b, 0x77, 0xbb, 0x0d, 0x5e, 0x96, 0xc7, 0xdb, 0xff, 0x7b, 0xff, 0xdf, 0xcc, 0x7b, 0xbb, 0x70,
-	0x7b, 0x18, 0xcf, 0x98, 0x1c, 0x3d, 0x67, 0x42, 0xd2, 0x42, 0x78, 0x32, 0xe5, 0xf1, 0x8c, 0x44,
-	0xb1, 0x4a, 0x14, 0xba, 0x91, 0xe7, 0x49, 0x1e, 0xb6, 0xaf, 0xb1, 0x89, 0x90, 0x8a, 0x9a, 0xa7,
-	0x55, 0xb6, 0x37, 0x03, 0x15, 0x28, 0x13, 0xd2, 0x34, 0x72, 0xd9, 0x5b, 0x81, 0x52, 0x41, 0xc8,
-	0x29, 0x8b, 0x04, 0x65, 0x52, 0xaa, 0x84, 0x25, 0x42, 0x49, 0xed, 0xde, 0xf6, 0x46, 0x4a, 0x4f,
-	0x94, 0xa6, 0x43, 0xa6, 0xb9, 0xb5, 0xa5, 0x2f, 0x0e, 0x86, 0x3c, 0x61, 0x07, 0x34, 0x62, 0x81,
-	0x90, 0x46, 0xec, 0xb4, 0xb8, 0x1a, 0x36, 0x62, 0x31, 0x9b, 0x64, 0xfd, 0x76, 0xaa, 0x35, 0x31,
-	0xd7, 0x6a, 0x1a, 0x8f, 0xb8, 0x55, 0xe1, 0x4d, 0x88, 0x1e, 0xa7, 0x5e, 0xc7, 0xa6, 0xd4, 0xe7,
-	0x27, 0x53, 0xae, 0x13, 0xfc, 0x04, 0x5e, 0x5f, 0xca, 0xea, 0x48, 0x49, 0xcd, 0xd1, 0x43, 0xd8,
-	0xb2, 0x16, 0x5b, 0xe0, 0x36, 0xb8, 0xbb, 0x71, 0xd8, 0x21, 0x95, 0x37, 0x42, 0x6c, 0xd9, 0xe0,
-	0xca, 0xe9, 0x8f, 0x6e, 0xe3, 0xf3, 0xef, 0x2f, 0x3d, 0xe0, 0xbb, 0x3a, 0xbc, 0x0f, 0x6f, 0x9a,
-	0xc6, 0x47, 0x3c, 0xf1, 0x1d, 0x88, 0xf3, 0x44, 0x57, 0x61, 0x53, 0x8c, 0x4d, 0xe3, 0x75, 0xbf,
-	0x29, 0xc6, 0xf8, 0x19, 0xdc, 0x2a, 0x4b, 0x1d, 0x48, 0x1f, 0x5e, 0xce, 0x72, 0x0e, 0xa5, 0x7b,
-	0x0e, 0x4a, 0x26, 0x1b, 0xac, 0xa7, 0x30, 0xfe, 0xdf, 0x32, 0xcc, 0x1c, 0x49, 0x3f, 0x0c, 0xff,
-	0x25, 0x79, 0x04, 0x61, 0x7e, 0xe3, 0xae, 0xff, 0x2e, 0xb1, 0xe3, 0x21, 0xe9, 0x78, 0x88, 0xdd,
-	0x0a, 0x37, 0x1e, 0x72, 0xcc, 0x82, 0xac, 0xd6, 0x2f, 0x54, 0xe2, 0x4f, 0xc0, 0x1d, 0x61, 0xc9,
-	0xa3, 0xf2, 0x08, 0x6b, 0xff, 0x71, 0x04, 0x74, 0xb4, 0xc4, 0xd9, 0x34, 0x9c, 0x7b, 0x17, 0x72,
-	0x5a, 0xff, 0x22, 0xe8, 0xe1, 0xd7, 0x35, 0x78, 0xc9, 0x80, 0xa2, 0xb7, 0x00, 0xb6, 0xec, 0xf4,
-	0xd0, 0xfe, 0x39, 0x38, 0xe5, 0x75, 0x69, 0xf7, 0x56, 0x91, 0x5a, 0x5f, 0x7c, 0xe7, 0xcd, 0xb7,
-	0x5f, 0xef, 0x9b, 0x5d, 0xd4, 0xa1, 0x75, 0x3b, 0x8c, 0x3e, 0x82, 0xfc, 0x7e, 0x10, 0xa9, 0xeb,
-	0x5f, 0x5e, 0xa5, 0x36, 0x5d, 0x59, 0xef, 0xa0, 0xee, 0x19, 0xa8, 0x5d, 0xb4, 0x43, 0xeb, 0x3f,
-	0x1a, 0xfa, 0x4a, 0x8c, 0x5f, 0xa3, 0x0f, 0x00, 0x6e, 0x64, 0x2d, 0xfa, 0x61, 0x58, 0x8f, 0x57,
-	0xde, 0xaf, 0x7a, 0xbc, 0x8a, 0x5d, 0xc1, 0x7b, 0x06, 0x6f, 0x1b, 0x75, 0x2f, 0xc0, 0x1b, 0x3c,
-	0x38, 0x9d, 0x7b, 0xe0, 0x6c, 0xee, 0x81, 0x9f, 0x73, 0x0f, 0xbc, 0x5b, 0x78, 0x8d, 0xb3, 0x85,
-	0xd7, 0xf8, 0xbe, 0xf0, 0x1a, 0x4f, 0x3b, 0x05, 0xf9, 0xcb, 0x62, 0x6d, 0x32, 0x8b, 0xb8, 0x1e,
-	0xb6, 0xcc, 0xdf, 0xe0, 0xfe, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xa2, 0x4d, 0x0d, 0xc2, 0x06,
-	0x05, 0x00, 0x00,
+	// 579 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0xc1, 0x8b, 0xd3, 0x4e,
+	0x14, 0xc7, 0x3b, 0xdd, 0x6e, 0x7f, 0xbf, 0xce, 0xc2, 0x82, 0x63, 0xc5, 0x12, 0x6d, 0xea, 0x0e,
+	0xeb, 0xae, 0x5b, 0x34, 0x43, 0xeb, 0xc1, 0xab, 0xad, 0xe0, 0x5e, 0xd7, 0x5c, 0x04, 0x41, 0x70,
+	0xd2, 0x0e, 0x31, 0x90, 0x66, 0xb2, 0xc9, 0x54, 0x2c, 0xe2, 0xc5, 0x83, 0x67, 0xc1, 0x83, 0x78,
+	0xf3, 0x24, 0x1e, 0xfd, 0x33, 0xf6, 0xb8, 0xe0, 0xc5, 0x93, 0x48, 0x2b, 0x88, 0xff, 0x85, 0x64,
+	0x66, 0x62, 0x9b, 0x36, 0x9b, 0xae, 0x5e, 0xca, 0xe4, 0xe5, 0xfb, 0xde, 0xf7, 0x33, 0xef, 0xbd,
+	0x14, 0xee, 0x38, 0xd1, 0x84, 0x06, 0x83, 0xa7, 0xd4, 0x0b, 0xc8, 0xc2, 0xf1, 0x78, 0xcc, 0xa2,
+	0x89, 0x15, 0x46, 0x5c, 0x70, 0x74, 0x69, 0x1e, 0xb7, 0xe6, 0x47, 0xe3, 0x02, 0x1d, 0x79, 0x01,
+	0x27, 0xf2, 0x57, 0x29, 0x8d, 0xba, 0xcb, 0x5d, 0x2e, 0x8f, 0x24, 0x39, 0xe9, 0xe8, 0x55, 0x97,
+	0x73, 0xd7, 0x67, 0x84, 0x86, 0x1e, 0xa1, 0x41, 0xc0, 0x05, 0x15, 0x1e, 0x0f, 0x62, 0xfd, 0xb6,
+	0x3d, 0xe0, 0xf1, 0x88, 0xc7, 0xc4, 0xa1, 0x31, 0x53, 0xb6, 0xe4, 0x59, 0xc7, 0x61, 0x82, 0x76,
+	0x48, 0x48, 0x5d, 0x2f, 0x90, 0x62, 0xad, 0xc5, 0xf9, 0xb0, 0x21, 0x8d, 0xe8, 0x28, 0xad, 0xb7,
+	0x9b, 0xaf, 0x89, 0x58, 0xcc, 0xc7, 0xd1, 0x80, 0x29, 0x15, 0xae, 0x43, 0xf4, 0x20, 0xf1, 0x3a,
+	0x92, 0xa9, 0x36, 0x3b, 0x1e, 0xb3, 0x58, 0xe0, 0x87, 0xf0, 0x62, 0x26, 0x1a, 0x87, 0x3c, 0x88,
+	0x19, 0xba, 0x0b, 0xab, 0xca, 0xa2, 0x01, 0xae, 0x81, 0x1b, 0x5b, 0xdd, 0xa6, 0x95, 0xdb, 0x11,
+	0x4b, 0xa5, 0xf5, 0x6b, 0x27, 0xdf, 0x5a, 0xa5, 0x4f, 0x3f, 0x3f, 0xb7, 0x81, 0xad, 0xf3, 0xf0,
+	0x01, 0xbc, 0x2c, 0x0b, 0x1f, 0x32, 0x61, 0x6b, 0x10, 0xed, 0x89, 0xb6, 0x61, 0xd9, 0x1b, 0xca,
+	0xc2, 0x15, 0xbb, 0xec, 0x0d, 0xf1, 0x63, 0xd8, 0x58, 0x95, 0x6a, 0x90, 0x1e, 0xfc, 0x3f, 0x8d,
+	0x69, 0x94, 0xd6, 0x19, 0x28, 0xa9, 0xac, 0x5f, 0x49, 0x60, 0xec, 0x3f, 0x69, 0x98, 0x6a, 0x92,
+	0x9e, 0xef, 0x2f, 0x93, 0xdc, 0x87, 0x70, 0xde, 0x71, 0x5d, 0x7f, 0xcf, 0x52, 0xe3, 0xb1, 0x92,
+	0xf1, 0x58, 0x6a, 0x2b, 0xf4, 0x78, 0xac, 0x23, 0xea, 0xa6, 0xb9, 0xf6, 0x42, 0x26, 0xfe, 0x08,
+	0xf4, 0x15, 0x32, 0x1e, 0xb9, 0x57, 0xd8, 0xf8, 0x87, 0x2b, 0xa0, 0xc3, 0x0c, 0x67, 0x59, 0x72,
+	0xee, 0xaf, 0xe5, 0x54, 0xfe, 0x19, 0xd0, 0x27, 0xd0, 0x90, 0x9c, 0xf7, 0x22, 0x46, 0x05, 0x5b,
+	0x6e, 0x47, 0x03, 0xfe, 0x37, 0x48, 0x5e, 0xf0, 0x48, 0xf6, 0xa2, 0x66, 0xa7, 0x8f, 0xa8, 0x0e,
+	0x37, 0x85, 0x27, 0x7c, 0x26, 0xbd, 0x6b, 0xb6, 0x7a, 0x40, 0x08, 0x56, 0x1c, 0x3e, 0x9c, 0x34,
+	0x36, 0x64, 0x50, 0x9e, 0xf1, 0x2d, 0x78, 0x25, 0xd7, 0x41, 0x37, 0x63, 0x69, 0xf6, 0xdd, 0x5f,
+	0x15, 0xb8, 0x29, 0xf5, 0xe8, 0x35, 0x80, 0x55, 0xb5, 0x4e, 0xe8, 0xe0, 0x8c, 0xfe, 0xac, 0xee,
+	0xaf, 0xd1, 0x3e, 0x8f, 0x54, 0x79, 0xe3, 0xeb, 0xaf, 0xbe, 0xfc, 0x78, 0x5b, 0x6e, 0xa1, 0x26,
+	0x29, 0xfa, 0xa8, 0xd0, 0x7b, 0x30, 0x1f, 0x18, 0xb2, 0x8a, 0xea, 0xaf, 0xee, 0xb6, 0x41, 0xce,
+	0xad, 0xd7, 0x50, 0x37, 0x25, 0xd4, 0x1e, 0xda, 0x25, 0xc5, 0x5f, 0x31, 0x79, 0xe1, 0x0d, 0x5f,
+	0xa2, 0x77, 0x00, 0x6e, 0xa5, 0x25, 0x7a, 0xbe, 0x5f, 0x8c, 0xb7, 0xba, 0xf0, 0xc5, 0x78, 0x39,
+	0xcb, 0x8b, 0xf7, 0x25, 0xde, 0x0e, 0x6a, 0xad, 0xc1, 0x43, 0x1f, 0x00, 0xdc, 0xce, 0xce, 0x1c,
+	0x75, 0x8a, 0xcc, 0x72, 0x37, 0xd0, 0xe8, 0xfe, 0x4d, 0x4a, 0x16, 0x11, 0xaf, 0x43, 0xec, 0xdf,
+	0x39, 0x99, 0x9a, 0xe0, 0x74, 0x6a, 0x82, 0xef, 0x53, 0x13, 0xbc, 0x99, 0x99, 0xa5, 0xd3, 0x99,
+	0x59, 0xfa, 0x3a, 0x33, 0x4b, 0x8f, 0x9a, 0x0b, 0xf2, 0xe7, 0x8b, 0xb9, 0x62, 0x12, 0xb2, 0xd8,
+	0xa9, 0xca, 0x7f, 0xd0, 0xdb, 0xbf, 0x03, 0x00, 0x00, 0xff, 0xff, 0x2d, 0xa6, 0x3a, 0xad, 0x3a,
+	0x06, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -362,6 +473,8 @@ type QueryClient interface {
 	// Queries a list of Resource items.
 	Resource(ctx context.Context, in *QueryGetResourceRequest, opts ...grpc.CallOption) (*QueryGetResourceResponse, error)
 	ResourceAll(ctx context.Context, in *QueryAllResourceRequest, opts ...grpc.CallOption) (*QueryAllResourceResponse, error)
+	// CreateResource creates a new resource.
+	CreateResource(ctx context.Context, in *QueryCreateResourceRequest, opts ...grpc.CallOption) (*QueryCreateResourceResponse, error)
 }
 
 type queryClient struct {
@@ -399,6 +512,15 @@ func (c *queryClient) ResourceAll(ctx context.Context, in *QueryAllResourceReque
 	return out, nil
 }
 
+func (c *queryClient) CreateResource(ctx context.Context, in *QueryCreateResourceRequest, opts ...grpc.CallOption) (*QueryCreateResourceResponse, error) {
+	out := new(QueryCreateResourceResponse)
+	err := c.cc.Invoke(ctx, "/bryanchain.bryanchain.Query/CreateResource", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
@@ -406,6 +528,8 @@ type QueryServer interface {
 	// Queries a list of Resource items.
 	Resource(context.Context, *QueryGetResourceRequest) (*QueryGetResourceResponse, error)
 	ResourceAll(context.Context, *QueryAllResourceRequest) (*QueryAllResourceResponse, error)
+	// CreateResource creates a new resource.
+	CreateResource(context.Context, *QueryCreateResourceRequest) (*QueryCreateResourceResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -420,6 +544,9 @@ func (*UnimplementedQueryServer) Resource(ctx context.Context, req *QueryGetReso
 }
 func (*UnimplementedQueryServer) ResourceAll(ctx context.Context, req *QueryAllResourceRequest) (*QueryAllResourceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResourceAll not implemented")
+}
+func (*UnimplementedQueryServer) CreateResource(ctx context.Context, req *QueryCreateResourceRequest) (*QueryCreateResourceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateResource not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -480,6 +607,24 @@ func _Query_ResourceAll_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_CreateResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryCreateResourceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).CreateResource(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bryanchain.bryanchain.Query/CreateResource",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).CreateResource(ctx, req.(*QueryCreateResourceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "bryanchain.bryanchain.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -495,6 +640,10 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResourceAll",
 			Handler:    _Query_ResourceAll_Handler,
+		},
+		{
+			MethodName: "CreateResource",
+			Handler:    _Query_CreateResource_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -702,6 +851,78 @@ func (m *QueryAllResourceResponse) MarshalToSizedBuffer(dAtA []byte) (int, error
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryCreateResourceRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryCreateResourceRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryCreateResourceRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Body) > 0 {
+		i -= len(m.Body)
+		copy(dAtA[i:], m.Body)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Body)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Title) > 0 {
+		i -= len(m.Title)
+		copy(dAtA[i:], m.Title)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Title)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryCreateResourceResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryCreateResourceResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryCreateResourceResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Id != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -784,6 +1005,39 @@ func (m *QueryAllResourceResponse) Size() (n int) {
 	if m.Pagination != nil {
 		l = m.Pagination.Size()
 		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryCreateResourceRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	l = len(m.Title)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	l = len(m.Body)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryCreateResourceResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovQuery(uint64(m.Id))
 	}
 	return n
 }
@@ -1264,6 +1518,221 @@ func (m *QueryAllResourceResponse) Unmarshal(dAtA []byte) error {
 				return err
 			}
 			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryCreateResourceRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryCreateResourceRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryCreateResourceRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Title", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Title = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Body", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Body = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryCreateResourceResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryCreateResourceResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryCreateResourceResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
 		default:
 			iNdEx = preIndex
 			skippy, err := skipQuery(dAtA[iNdEx:])

@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Query_Params_FullMethodName      = "/bryanchain.bryanchain.Query/Params"
-	Query_Resource_FullMethodName    = "/bryanchain.bryanchain.Query/Resource"
-	Query_ResourceAll_FullMethodName = "/bryanchain.bryanchain.Query/ResourceAll"
+	Query_Params_FullMethodName         = "/bryanchain.bryanchain.Query/Params"
+	Query_Resource_FullMethodName       = "/bryanchain.bryanchain.Query/Resource"
+	Query_ResourceAll_FullMethodName    = "/bryanchain.bryanchain.Query/ResourceAll"
+	Query_CreateResource_FullMethodName = "/bryanchain.bryanchain.Query/CreateResource"
 )
 
 // QueryClient is the client API for Query service.
@@ -33,6 +34,8 @@ type QueryClient interface {
 	// Queries a list of Resource items.
 	Resource(ctx context.Context, in *QueryGetResourceRequest, opts ...grpc.CallOption) (*QueryGetResourceResponse, error)
 	ResourceAll(ctx context.Context, in *QueryAllResourceRequest, opts ...grpc.CallOption) (*QueryAllResourceResponse, error)
+	// CreateResource creates a new resource.
+	CreateResource(ctx context.Context, in *QueryCreateResourceRequest, opts ...grpc.CallOption) (*QueryCreateResourceResponse, error)
 }
 
 type queryClient struct {
@@ -70,6 +73,15 @@ func (c *queryClient) ResourceAll(ctx context.Context, in *QueryAllResourceReque
 	return out, nil
 }
 
+func (c *queryClient) CreateResource(ctx context.Context, in *QueryCreateResourceRequest, opts ...grpc.CallOption) (*QueryCreateResourceResponse, error) {
+	out := new(QueryCreateResourceResponse)
+	err := c.cc.Invoke(ctx, Query_CreateResource_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility
@@ -79,6 +91,8 @@ type QueryServer interface {
 	// Queries a list of Resource items.
 	Resource(context.Context, *QueryGetResourceRequest) (*QueryGetResourceResponse, error)
 	ResourceAll(context.Context, *QueryAllResourceRequest) (*QueryAllResourceResponse, error)
+	// CreateResource creates a new resource.
+	CreateResource(context.Context, *QueryCreateResourceRequest) (*QueryCreateResourceResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -94,6 +108,9 @@ func (UnimplementedQueryServer) Resource(context.Context, *QueryGetResourceReque
 }
 func (UnimplementedQueryServer) ResourceAll(context.Context, *QueryAllResourceRequest) (*QueryAllResourceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResourceAll not implemented")
+}
+func (UnimplementedQueryServer) CreateResource(context.Context, *QueryCreateResourceRequest) (*QueryCreateResourceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateResource not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -162,6 +179,24 @@ func _Query_ResourceAll_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_CreateResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryCreateResourceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).CreateResource(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_CreateResource_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).CreateResource(ctx, req.(*QueryCreateResourceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -180,6 +215,10 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResourceAll",
 			Handler:    _Query_ResourceAll_Handler,
+		},
+		{
+			MethodName: "CreateResource",
+			Handler:    _Query_CreateResource_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

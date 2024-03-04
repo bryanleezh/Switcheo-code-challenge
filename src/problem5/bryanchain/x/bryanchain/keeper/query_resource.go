@@ -52,3 +52,31 @@ func (k Keeper) Resource(ctx context.Context, req *types.QueryGetResourceRequest
 
 	return &types.QueryGetResourceResponse{Resource: resource}, nil
 }
+
+func (k Keeper) CreateResource(ctx context.Context, req *types.QueryCreateResourceRequest) (*types.QueryCreateResourceResponse, error) {
+	// Check if the request is nil
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+
+	// Extract parameters from the request
+	creator := req.Creator
+	title := req.Title
+	body := req.Body
+
+	// Perform validation if needed
+
+	// Create the resource
+	var newResource = types.Resource{
+		Creator: creator,
+		Title:   title,
+		Body:    body,
+	}
+
+	// Call the CreateResource function from msgServer
+	id := k.AppendResource(ctx, newResource)
+
+	return &types.QueryCreateResourceResponse{
+		Id: id,
+	}, nil
+}
