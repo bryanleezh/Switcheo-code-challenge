@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createResource } from "../service/queries";
 
 export default function AddResource() {
@@ -9,9 +9,9 @@ export default function AddResource() {
     
     // Create new resource with following resource
     // useEffect(() => {
-        // async function newResource(title, body) {
+        // async function newResource() {
         //     try {
-        //         const data = await createResource();
+        //         const data = await createResource(title, body);
         //     } catch (error: any) {
         //         console.error(error.message);
         //     }
