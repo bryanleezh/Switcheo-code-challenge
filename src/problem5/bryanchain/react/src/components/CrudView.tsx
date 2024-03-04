@@ -1,6 +1,7 @@
 import React from "react";
 import ViewAllResource from "./ViewAllResource";
 import AddResource from "./AddResource";
+import DeleteResource from "./DeleteResource";
 
 
 export default function CrudView() {
@@ -8,6 +9,7 @@ export default function CrudView() {
         <div>
             <ViewAllResource />
             <AddResource />
+            <DeleteResource />
         </div>
     )
 }
