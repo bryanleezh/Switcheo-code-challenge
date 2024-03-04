@@ -1,10 +1,13 @@
-# Switcheo Code Challenge #1 #
+# Switcheo Code Challenge #1
 
-Kindly **do not fork** this repository as your responses may be publicly linked to this repository.
-Please submit your application along with the solutions attached or linked.   
+## Consensus Breaking Change
 
-It is important that you minimally attempt the problems, even if you do not arrive at a working solution.
+1. Explain what does it mean by breaking consensus.
 
-## Submission ##
-You can either provide a link to an online repository, attach the solution in your application, or whichever method you prefer.
-We're cool as long as we can view your solution without any pain.
+Breaking consensus means causing the single state of a blockchain to change such that everyone has to update the blockchain software so that consensus can be achieved again.
+
+2. Explain why your change would break the consensus
+
+As a change, I modified the Resource block to have an additional field called pricestring.
+
+By modifying the Resource block, any addition of new resources will be different from before as the 'older' blockchain would not be able to process the new Resource block.
