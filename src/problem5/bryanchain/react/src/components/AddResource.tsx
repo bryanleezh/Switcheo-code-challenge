@@ -7,8 +7,9 @@ export default function AddResource() {
     const [ body, setBody ] = useState<string>("");
     const [ generatedCLI, setGeneratedCLI ] = useState<string>("");
     
+    // Create new resource with following resource
     // useEffect(() => {
-        // async function newResource() {
+        // async function newResource(title, body) {
         //     try {
         //         const data = await createResource();
         //     } catch (error: any) {
