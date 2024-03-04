@@ -25,7 +25,7 @@ export default function DeleteResource() {
     }
     return (
         <div>
-            <h1 className="p-5"><b>Create Resources</b></h1>
+            <h1 className="p-5"><b>Delete Resource</b></h1>
             <div className="flex flex-col justify-center p-4">
                 <p>Unfortunately, when using deleteResource through querying, the deletion does not happen, however, using the CLI message would delete the resource.</p>
                 <p>This form will generate the CLI command to input to delete the resource:</p>
