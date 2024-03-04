@@ -34,6 +34,16 @@ service Query {
   rpc CreateResource (QueryCreateResourceRequest) returns (QueryCreateResourceResponse) {
     option (google.api.http).post = "/bryanchain/bryanchain/resource"; // Adjust the HTTP method and path as needed.
   }
+
+  // UpdateResource updates an existing resource.
+  rpc UpdateResource (QueryUpdateResourceRequest) returns (QueryUpdateResourceResponse) {
+    option (google.api.http).put = "/bryanchain/bryanchain/resource/{id}";
+  }
+
+  // DeleteResource deletes an existing resource.
+  rpc DeleteResource (QueryDeleteResourceRequest) returns (QueryDeleteResourceResponse) {
+    option (google.api.http).delete = "/bryanchain/bryanchain/resource/{id}";
+  }
 }
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
@@ -71,3 +81,20 @@ message QueryCreateResourceRequest {
 message QueryCreateResourceResponse {
   uint64 id = 1;
 }
+
+message QueryUpdateResourceRequest {
+  uint64 id = 1;
+  string creator = 2;
+  string title = 3;
+  string body = 4;
+}
+
+message QueryUpdateResourceResponse {
+  Resource resource = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryDeleteResourceRequest {
+  uint64 id = 1;
+}
+
+message QueryDeleteResourceResponse {}

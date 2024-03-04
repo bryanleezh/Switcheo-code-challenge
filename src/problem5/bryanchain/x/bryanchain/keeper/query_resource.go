@@ -80,3 +80,51 @@ func (k Keeper) CreateResource(ctx context.Context, req *types.QueryCreateResour
 		Id: id,
 	}, nil
 }
+
+func (k Keeper) UpdateResource(ctx context.Context, req *types.QueryUpdateResourceRequest) (*types.QueryUpdateResourceResponse, error) {
+	// Check if the request is nil
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+
+	// Extract parameters from the request
+	id := req.Id
+	// Perform validation if needed
+
+	// Retrieve the existing resource
+	resource, found := k.GetResource(ctx, id)
+	if !found {
+		return nil, sdkerrors.ErrKeyNotFound
+	}
+
+	// Update the resource fields
+	resource.Creator = req.Creator
+	resource.Title = req.Title
+	resource.Body = req.Body
+
+	// Save the updated resource
+	k.SetResource(ctx, resource)
+
+	return &types.QueryUpdateResourceResponse{Resource: resource}, nil
+}
+
+func (k Keeper) DeleteResource(ctx context.Context, req *types.QueryDeleteResourceRequest) (*types.QueryDeleteResourceResponse, error) {
+	// Check if the request is nil
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+
+	// Extract parameters from the request
+	id := req.Id
+
+	// Retrieve the existing resource
+	_, found := k.GetResource(ctx, id)
+	if !found {
+		return nil, sdkerrors.ErrKeyNotFound
+	}
+
+	// Remove the resource from the store
+	k.RemoveResource(ctx, id)
+
+	return &types.QueryDeleteResourceResponse{}, nil
+}

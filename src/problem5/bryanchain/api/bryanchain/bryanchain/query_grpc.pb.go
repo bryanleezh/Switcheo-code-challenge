@@ -23,6 +23,8 @@ const (
 	Query_Resource_FullMethodName       = "/bryanchain.bryanchain.Query/Resource"
 	Query_ResourceAll_FullMethodName    = "/bryanchain.bryanchain.Query/ResourceAll"
 	Query_CreateResource_FullMethodName = "/bryanchain.bryanchain.Query/CreateResource"
+	Query_UpdateResource_FullMethodName = "/bryanchain.bryanchain.Query/UpdateResource"
+	Query_DeleteResource_FullMethodName = "/bryanchain.bryanchain.Query/DeleteResource"
 )
 
 // QueryClient is the client API for Query service.
@@ -36,6 +38,10 @@ type QueryClient interface {
 	ResourceAll(ctx context.Context, in *QueryAllResourceRequest, opts ...grpc.CallOption) (*QueryAllResourceResponse, error)
 	// CreateResource creates a new resource.
 	CreateResource(ctx context.Context, in *QueryCreateResourceRequest, opts ...grpc.CallOption) (*QueryCreateResourceResponse, error)
+	// UpdateResource updates an existing resource.
+	UpdateResource(ctx context.Context, in *QueryUpdateResourceRequest, opts ...grpc.CallOption) (*QueryUpdateResourceResponse, error)
+	// DeleteResource deletes an existing resource.
+	DeleteResource(ctx context.Context, in *QueryDeleteResourceRequest, opts ...grpc.CallOption) (*QueryDeleteResourceResponse, error)
 }
 
 type queryClient struct {
@@ -82,6 +88,24 @@ func (c *queryClient) CreateResource(ctx context.Context, in *QueryCreateResourc
 	return out, nil
 }
 
+func (c *queryClient) UpdateResource(ctx context.Context, in *QueryUpdateResourceRequest, opts ...grpc.CallOption) (*QueryUpdateResourceResponse, error) {
+	out := new(QueryUpdateResourceResponse)
+	err := c.cc.Invoke(ctx, Query_UpdateResource_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) DeleteResource(ctx context.Context, in *QueryDeleteResourceRequest, opts ...grpc.CallOption) (*QueryDeleteResourceResponse, error) {
+	out := new(QueryDeleteResourceResponse)
+	err := c.cc.Invoke(ctx, Query_DeleteResource_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility
@@ -93,6 +117,10 @@ type QueryServer interface {
 	ResourceAll(context.Context, *QueryAllResourceRequest) (*QueryAllResourceResponse, error)
 	// CreateResource creates a new resource.
 	CreateResource(context.Context, *QueryCreateResourceRequest) (*QueryCreateResourceResponse, error)
+	// UpdateResource updates an existing resource.
+	UpdateResource(context.Context, *QueryUpdateResourceRequest) (*QueryUpdateResourceResponse, error)
+	// DeleteResource deletes an existing resource.
+	DeleteResource(context.Context, *QueryDeleteResourceRequest) (*QueryDeleteResourceResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -111,6 +139,12 @@ func (UnimplementedQueryServer) ResourceAll(context.Context, *QueryAllResourceRe
 }
 func (UnimplementedQueryServer) CreateResource(context.Context, *QueryCreateResourceRequest) (*QueryCreateResourceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateResource not implemented")
+}
+func (UnimplementedQueryServer) UpdateResource(context.Context, *QueryUpdateResourceRequest) (*QueryUpdateResourceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateResource not implemented")
+}
+func (UnimplementedQueryServer) DeleteResource(context.Context, *QueryDeleteResourceRequest) (*QueryDeleteResourceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteResource not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 
@@ -197,6 +231,42 @@ func _Query_CreateResource_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_UpdateResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryUpdateResourceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).UpdateResource(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_UpdateResource_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).UpdateResource(ctx, req.(*QueryUpdateResourceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_DeleteResource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryDeleteResourceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).DeleteResource(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_DeleteResource_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).DeleteResource(ctx, req.(*QueryDeleteResourceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -219,6 +289,14 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateResource",
 			Handler:    _Query_CreateResource_Handler,
+		},
+		{
+			MethodName: "UpdateResource",
+			Handler:    _Query_UpdateResource_Handler,
+		},
+		{
+			MethodName: "DeleteResource",
+			Handler:    _Query_DeleteResource_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
