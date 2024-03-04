@@ -3,6 +3,7 @@
 import IgntAssets from "../components/IgntAssets";
 import IgntTransactions from "../components/IgntTransactions";
 import IgntTransfer from "../components/IgntTransfer";
+import React from "react";
 
 export default function PortfolioView() {
   return (
