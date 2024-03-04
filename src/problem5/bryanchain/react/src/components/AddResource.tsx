@@ -21,7 +21,7 @@ export default function AddResource() {
 
     const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
-        const generatedString = `"bryanchaind tx bryanchain create-resource '${title}' ${body} --from bryan --chain-id bryanchain"`;
+        const generatedString = `"bryanchaind tx bryanchain create-resource '${title}' '${body}' --from bryan --chain-id bryanchain"`;
         setGeneratedCLI(generatedString);
     }
     return (
