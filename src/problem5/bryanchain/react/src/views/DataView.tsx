@@ -1,5 +1,6 @@
 import CrudView from "../components/CrudView";
 import IgntCrud from "../components/IgntCrud";
+import React from "react";
 
 export default function DataView() {
   return (

@@ -1,4 +1,4 @@
-// import { Resource } from "bryanchain-client-ts/lib/bryanchain.bryanchain/module";
+import React from "react";
 import { Resource } from "../utils/types";
 import { useEffect, useState } from "react";
 import { getAllResources } from "../service/queries";
@@ -20,11 +20,12 @@ export default function ViewAllResource() {
 
     return (
         <div>
-            <h1>All Resources</h1>
+            <h1 className="p-5"><b>All Resources</b></h1>
+
             <ul>
                 {resources.map((resource: Resource) =>  
-                    <li key={resource.id}> 
-                        Title :{resource.title}
+                    <li key={resource.id} className="p-5"> 
+                        Title : {resource.title}
                         <br />
                         Body : {resource.body}
                     </li>
