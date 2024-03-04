@@ -168,6 +168,52 @@ paths:
           type: boolean
       tags:
         - Query
+    post:
+      summary: RPC method for creating a resource.
+      operationId: BryanchainBryanchainQuery_CreateResource
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uint64
+            description: Response message for creating a resource.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: creator
+          in: query
+          required: false
+          type: string
+        - name: title
+          in: query
+          required: false
+          type: string
+        - name: body
+          in: query
+          required: false
+          type: string
+      tags:
+        - Query
   /bryanchain/bryanchain/resource/{id}:
     get:
       summary: Queries a list of Resource items.
@@ -214,6 +260,53 @@ paths:
           required: true
           type: string
           format: uint64
+      tags:
+        - Query
+    put:
+      summary: RPC method for updating a resource.
+      operationId: BryanchainBryanchainQuery_UpdateResource
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            description: Response message for updating a resource.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          format: uint64
+        - name: creator
+          in: query
+          required: false
+          type: string
+        - name: title
+          in: query
+          required: false
+          type: string
+        - name: body
+          in: query
+          required: false
+          type: string
       tags:
         - Query
   /bryanchain.bryanchain.Msg/CreateResource:
@@ -19992,6 +20085,13 @@ definitions:
                   "@type": "type.googleapis.com/google.protobuf.Duration",
                   "value": "1.212s"
                 }
+  bryanchain.bryanchain.CreateResourceResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+    description: Response message for creating a resource.
   bryanchain.bryanchain.Params:
     type: object
     description: Params defines the parameters for the module.
@@ -20072,6 +20172,9 @@ definitions:
         type: string
       creator:
         type: string
+  bryanchain.bryanchain.UpdateResourceResponse:
+    type: object
+    description: Response message for updating a resource.
   cosmos.base.query.v1beta1.PageRequest:
     type: object
     properties:
