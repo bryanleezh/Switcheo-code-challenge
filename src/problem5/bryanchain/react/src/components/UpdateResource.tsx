@@ -29,8 +29,8 @@ export default function UpdateResource() {
         <div>
             <h1 className="p-5"><b>Update Resource</b></h1>
             <div className="flex flex-col justify-center p-4">
-                <p>Unfortunately, when using createResource through querying, the creation does not happen, however, using the CLI message would create the resource.</p>
-                <p>This form will generate the CLI command to input to create the resource:</p>
+                <p>Unfortunately, when using updateResource through querying, the updating does not happen, however, using the CLI message would update the resource.</p>
+                <p>This form will generate the CLI command to input to update the resource:</p>
                 <div className="flex justify-center items-center mt-5">
                     <form onSubmit={handleSubmit} className="w-1/2 border border-spacing-2 border-black p-4 rounded-lg">
                         <div className="flex flex-col space-y-1">
