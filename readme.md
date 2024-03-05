@@ -1,10 +1,11 @@
-# Switcheo Code Challenge #1 #
+# Switcheo Code Challenge #1
 
-Kindly **do not fork** this repository as your responses may be publicly linked to this repository.
-Please submit your application along with the solutions attached or linked.   
+Coding challenge for Switcheo Labs fullstack engineer intern interview
 
-It is important that you minimally attempt the problems, even if you do not arrive at a working solution.
+## Problem 2 Demo
 
-## Submission ##
-You can either provide a link to an online repository, attach the solution in your application, or whichever method you prefer.
-We're cool as long as we can view your solution without any pain.
+![](./assets/problem2-demo.gif)
+
+## Problem 5 Demo
+
+![](./assets/problem5-demo.gif)
