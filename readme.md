@@ -1,6 +1,6 @@
 # Switcheo Code Challenge #1
 
-Coding challenge for Switcheo Labs fullstack engineer intern interview
+Coding challenge for Switcheo Labs fullstack engineer intern coding challenge
 
 ## Problem 2 Setup
 
