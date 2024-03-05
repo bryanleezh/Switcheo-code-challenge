@@ -5,6 +5,12 @@ interface Resource {
     createor: string
 }
 
+interface DisclaimerProps {
+    title: string,
+    description: string,
+}
+
 export type {
     Resource,
+    DisclaimerProps,
 }
